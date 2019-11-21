@@ -2,6 +2,7 @@ package com.mas.impl;
 
 import com.mas.ConcurrentRedis;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
+import org.openjdk.jmh.annotations.Benchmark;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
@@ -12,7 +13,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PooledJedisImpl implements ConcurrentRedis {
-    private ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
+    private ExecutorService es = Executors.newFixedThreadPool(10);
     private JedisPool jedisPool = configJedisPool();
     private int targetDbIndex;
 
@@ -78,12 +79,12 @@ public class PooledJedisImpl implements ConcurrentRedis {
 
         @Override
         public Long call() {
-            System.err.println(Thread.currentThread().getName() + " ready to run");
-            System.err.println(Thread.currentThread().getName() + " start value is " + jedis.get(key));
+//            System.err.println(Thread.currentThread().getName() + " ready to run");
+//            System.err.println(Thread.currentThread().getName() + " start value is " + jedis.get(key));
             for (int i = 0; i < this.steps; i++) {
                 jedis.incr(this.key);
             }
-            System.err.println(Thread.currentThread().getName() + " end value is " + jedis.get(key));
+//            System.err.println(Thread.currentThread().getName() + " end value is " + jedis.get(key));
             return Long.parseLong(jedis.get(key));
         }
     }
