@@ -57,10 +57,9 @@ public class PooledJedisImpl implements ConcurrentRedis {
     private Collection<Callable<Long>> makeTasks(int concurrentCount, int iteratingCount) {
         Collection<Callable<Long>> tasks = new ArrayList<>(concurrentCount);
         for (int i = 0; i < concurrentCount; i++) {
-            try(Jedis jedis = jedisPool.getResource()) {
-                jedis.select(targetDbIndex);
-                tasks.add(new PooledJedisImpl.Task(jedis, KEY_NAME, iteratingCount));
-            }
+            Jedis jedis = jedisPool.getResource();
+            jedis.select(targetDbIndex);
+            tasks.add(new PooledJedisImpl.Task(jedis, KEY_NAME, iteratingCount));
         }
 
         return tasks;
@@ -80,11 +79,11 @@ public class PooledJedisImpl implements ConcurrentRedis {
         @Override
         public Long call() {
             System.err.println(Thread.currentThread().getName() + " ready to run");
-            System.err.println("start value is " + jedis.get(key));
+            System.err.println(Thread.currentThread().getName() + " start value is " + jedis.get(key));
             for (int i = 0; i < this.steps; i++) {
                 jedis.incr(this.key);
             }
-            System.err.println("end value is " + jedis.get(key));
+            System.err.println(Thread.currentThread().getName() + " end value is " + jedis.get(key));
             return Long.parseLong(jedis.get(key));
         }
     }
