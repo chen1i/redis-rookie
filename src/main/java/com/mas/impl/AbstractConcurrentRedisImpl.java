@@ -9,8 +9,9 @@ import java.util.concurrent.Executors;
 
 public abstract class AbstractConcurrentRedisImpl implements ConcurrentRedis {
     static final String KEY_NAME = "test:redis:uniq_id";
+    protected int targetDbIndex;
+
     private ExecutorService es;
-    private int targetDbIndex;
 
     AbstractConcurrentRedisImpl(int threadCount, int targetDbIndex) {
         this.es = Executors.newFixedThreadPool(threadCount);
@@ -43,16 +44,6 @@ public abstract class AbstractConcurrentRedisImpl implements ConcurrentRedis {
         }
 
         abstract public Long call();
-//        @Override
-//        public Long call() {
-////            System.err.println(Thread.currentThread().getName() + " ready to run");
-////            System.err.println(Thread.currentThread().getName() + " start value is " + jedis.get(key));
-//            for (int i = 0; i < this.steps; i++) {
-//                redisConnection.incr(this.key);
-//            }
-////            System.err.println(Thread.currentThread().getName() + " end value is " + jedis.get(key));
-//            return Long.parseLong(jedis.get(key));
-//        }
     }
 
 }

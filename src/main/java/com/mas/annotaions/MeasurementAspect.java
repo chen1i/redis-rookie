@@ -17,5 +17,6 @@ public class MeasurementAspect {
         long executionTime = System.currentTimeMillis() - start;
 
         System.err.println(joinPoint.getSignature() + " executed in " + executionTime + "ms");
-        return proceed;    }
+        return proceed;
+    }
 }
