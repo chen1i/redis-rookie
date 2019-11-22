@@ -19,5 +19,6 @@ public class App
 //        runner.testWithPooledJedis4();
         runner.testWithPooledJedis10();
         runner.testWithLettuce();
+        runner.testWithRedisson();
     }
 }
