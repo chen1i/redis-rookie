@@ -15,8 +15,9 @@ public class App
         ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
 
         RedisRunner runner = context.getBean(RedisRunner.class);
-        runner.testWithPooledJedis1();
-        runner.testWithPooledJedis4();
+//        runner.testWithPooledJedis1();
+//        runner.testWithPooledJedis4();
         runner.testWithPooledJedis10();
+        runner.testWithLettuce();
     }
 }

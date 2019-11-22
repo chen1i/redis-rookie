@@ -1,6 +1,7 @@
 package com.mas;
 
 import com.mas.annotaions.TimeMeasured;
+import com.mas.impl.LettuceImpl;
 import com.mas.impl.PooledJedisImpl;
 import org.springframework.stereotype.Service;
 
@@ -31,4 +32,10 @@ public class RedisRunner {
         System.out.println("value of last check: " + incrementalResult);
     }
 
+    @TimeMeasured
+    void testWithLettuce() {
+        ConcurrentRedis subject = new LettuceImpl(10, 2);
+        long result = subject.getIncrementalResult(10, 10000);
+        System.out.println("value of last check " + result);
+    }
 }

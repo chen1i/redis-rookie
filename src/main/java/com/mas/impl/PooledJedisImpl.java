@@ -12,6 +12,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PooledJedisImpl implements ConcurrentRedis {
+    private static final String KEY_NAME = "test:redis:uniq_id";
     private ExecutorService es;
     private JedisPool jedisPool;
     private int targetDbIndex;
@@ -32,7 +33,6 @@ public class PooledJedisImpl implements ConcurrentRedis {
         return new JedisPool(jedisPoolConfig, "localhost", 6379);
     }
 
-    private static final String KEY_NAME = "test:redis:uniq_id";
 
     @Override
     public long getIncrementalResult(int concurrentCount, final int iteratingCount) {
