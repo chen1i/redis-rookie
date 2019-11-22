@@ -12,12 +12,17 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class PooledJedisImpl implements ConcurrentRedis {
-    private ExecutorService es = Executors.newFixedThreadPool(10);
-    private JedisPool jedisPool = configJedisPool();
+    private ExecutorService es;
+    private JedisPool jedisPool;
     private int targetDbIndex;
 
+    public PooledJedisImpl(int threadCount, int redisDbIndex) {
+        this.es = Executors.newFixedThreadPool(threadCount);
+        this.jedisPool = configJedisPool();
+        this.targetDbIndex = redisDbIndex;
+    }
+
     private JedisPool configJedisPool() {
-        targetDbIndex = 2;
         GenericObjectPoolConfig jedisPoolConfig = new GenericObjectPoolConfig();
         jedisPoolConfig.setMaxTotal(100);
         jedisPoolConfig.setMaxIdle(20);
