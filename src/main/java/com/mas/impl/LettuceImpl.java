@@ -2,6 +2,7 @@ package com.mas.impl;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;
+import io.lettuce.core.api.async.RedisAsyncCommands;
 import io.lettuce.core.api.sync.RedisCommands;
 
 import java.util.ArrayList;
@@ -60,11 +61,11 @@ public class LettuceImpl extends AbstractConcurrentRedisImpl {
         }
 
         private Long getCachedValue() {
-            return Long.valueOf(getRedisInstance().get(key));
+            return Long.valueOf(connection.sync().get(key));
         }
 
-        private RedisCommands<String, String> getRedisInstance() {
-            return connection.sync();
+        private RedisAsyncCommands<String, String> getRedisInstance() {
+            return connection.async();
         }
     }
 }
