@@ -9,11 +9,15 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+/**
+ * THIS Implementation is BROKEN because non-pool Jedis instance is not thread-safe.
+ */
+@Deprecated
 public class JedisImpl implements ConcurrentRedis {
     private ExecutorService es = Executors.newFixedThreadPool(Runtime.getRuntime().availableProcessors());
     private Jedis jedis = new Jedis("localhost", 6379);
     
-    public static final String KEY_NAME = "test:redis:uniq_id";
+    private static final String KEY_NAME = "test:redis:uniq_id";
 
     @Override
     public long getIncrementalResult(int concurrentCount, final int iteratingCount){
@@ -47,14 +51,14 @@ public class JedisImpl implements ConcurrentRedis {
         private String key;
         private int steps;
 
-        public Task(Jedis jedis, String key, int steps) {
+        Task(Jedis jedis, String key, int steps) {
             this.jedis = jedis;
             this.key = key;
             this.steps = steps;
         }
 
         @Override
-        public Long call() throws Exception {
+        public Long call(){
             for (int i = 0; i < this.steps; i++) {
                 jedis.incr(this.key);
             }
