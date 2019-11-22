@@ -1,4 +1,4 @@
-package com.mas.annotaions;
+package com.mas.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

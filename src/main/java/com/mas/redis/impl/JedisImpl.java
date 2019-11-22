@@ -1,12 +1,11 @@
-package com.mas.impl;
+package com.mas.redis.impl;
 
-import com.mas.ConcurrentRedis;
+import com.mas.redis.ConcurrentRedis;
 import redis.clients.jedis.Jedis;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 

@@ -1,4 +1,4 @@
-package com.mas.annotaions;
+package com.mas.aop;
 
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class MeasurementAspect {
-    @Around("com.mas.annotaions.AllJoinPointsConfig.methodNeedTimeMeasure()")
+    @Around("com.mas.aop.AllJoinPointsConfig.methodNeedTimeMeasure()")
     public Object measureExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
         long start = System.currentTimeMillis();
 

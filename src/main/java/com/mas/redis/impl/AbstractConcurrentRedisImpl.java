@@ -1,6 +1,6 @@
-package com.mas.impl;
+package com.mas.redis.impl;
 
-import com.mas.ConcurrentRedis;
+import com.mas.redis.ConcurrentRedis;
 
 import java.util.Collection;
 import java.util.concurrent.Callable;

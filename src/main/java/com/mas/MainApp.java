@@ -1,18 +1,15 @@
 package com.mas;
 
+import com.mas.service.RedisRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
-/**
- * Hello world!
- *
- */
 @SpringBootApplication
-public class App
+public class MainApp
 {
     public static void main( String[] args ) {
-        ConfigurableApplicationContext context = SpringApplication.run(App.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(MainApp.class, args);
 
         RedisRunner runner = context.getBean(RedisRunner.class);
 //        runner.testWithPooledJedis1();

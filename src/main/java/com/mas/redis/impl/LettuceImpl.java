@@ -1,4 +1,4 @@
-package com.mas.impl;
+package com.mas.redis.impl;
 
 import io.lettuce.core.RedisClient;
 import io.lettuce.core.api.StatefulRedisConnection;

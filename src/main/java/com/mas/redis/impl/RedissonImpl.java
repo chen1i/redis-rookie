@@ -1,4 +1,4 @@
-package com.mas.impl;
+package com.mas.redis.impl;
 
 import org.redisson.Redisson;
 import org.redisson.api.RedissonClient;

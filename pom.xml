@@ -85,7 +85,7 @@
                 </executions>
 
                 <configuration>
-                    <mainClass>com.mas.App</mainClass>
+                    <mainClass>com.mas.MainApp</mainClass>
                     <executable>true</executable>
                     <layout>ZIP</layout>
                 </configuration>

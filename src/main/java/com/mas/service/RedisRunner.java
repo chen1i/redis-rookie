@@ -1,9 +1,10 @@
-package com.mas;
+package com.mas.service;
 
-import com.mas.annotaions.TimeMeasured;
-import com.mas.impl.LettuceImpl;
-import com.mas.impl.PooledJedisImpl;
-import com.mas.impl.RedissonImpl;
+import com.mas.redis.ConcurrentRedis;
+import com.mas.annotation.TimeMeasured;
+import com.mas.redis.impl.LettuceImpl;
+import com.mas.redis.impl.PooledJedisImpl;
+import com.mas.redis.impl.RedissonImpl;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -34,14 +35,14 @@ public class RedisRunner {
     }
 
     @TimeMeasured
-    void testWithLettuce() {
+    public void testWithLettuce() {
         ConcurrentRedis subject = new LettuceImpl(10, 2);
         long result = subject.getIncrementalResult(10, 10000);
         System.out.println("value of last check " + result);
     }
 
     @TimeMeasured
-    void testWithRedisson() {
+    public void testWithRedisson() {
         ConcurrentRedis subject = new RedissonImpl(10, 2);
         long result = subject.getIncrementalResult(10, 10000);
         System.out.println("value of last check " + result);

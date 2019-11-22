@@ -1,8 +1,8 @@
-package com.mas.annotaions;
+package com.mas.aop;
 
 import org.aspectj.lang.annotation.Pointcut;
 
 public class AllJoinPointsConfig {
-    @Pointcut("@annotation(com.mas.annotaions.TimeMeasured)")
+    @Pointcut("@annotation(com.mas.annotation.TimeMeasured)")
     public void methodNeedTimeMeasure(){}
 }
