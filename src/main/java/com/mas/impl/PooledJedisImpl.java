@@ -2,7 +2,6 @@ package com.mas.impl;
 
 import com.mas.ConcurrentRedis;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.openjdk.jmh.annotations.Benchmark;
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
