@@ -15,7 +15,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-	<maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
+    <maven-jar-plugin.version>3.2.0</maven-jar-plugin.version>
     </properties>
 
     <repositories>
@@ -32,10 +32,10 @@
         </repository>
     </repositories>
     <pluginRepositories>
-	    <pluginRepository>
-		    <id>central</id>
-		    <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
-	    </pluginRepository>
+        <pluginRepository>
+            <id>central</id>
+            <url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+        </pluginRepository>
     </pluginRepositories>
     <dependencies>
         <dependency>
@@ -71,25 +71,25 @@
         </dependency>
     </dependencies>
     <build>
-	    <plugins>
-		    <plugin>
-			    <groupId>org.springframework.boot</groupId>
-			    <artifactId>spring-boot-maven-plugin</artifactId>
-			    <version>2.2.1.RELEASE</version>
-			    <executions>
-				    <execution>
-					    <goals>
-						    <goal>repackage</goal>
-					    </goals>
-				    </execution>
-			    </executions>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.1.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
 
-			    <configuration>
-				    <mainClass>com.mas.App</mainClass>
-				    <executable>true</executable>
-				    <layout>ZIP</layout>
-			    </configuration>
-		    </plugin>
-	    </plugins>
+                <configuration>
+                    <mainClass>com.mas.App</mainClass>
+                    <executable>true</executable>
+                    <layout>ZIP</layout>
+                </configuration>
+            </plugin>
+        </plugins>
     </build>
 </project>
